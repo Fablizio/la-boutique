@@ -3,8 +3,11 @@
   --main_color: #1396ab;
 }
 
+
 body {
   font-family: "Mohave", sans-serif;
+   margin: 0;
+  border: 0;
 }
 
 h4 {
@@ -31,6 +34,25 @@ strong {
   flex-direction: column;
   justify-content: center;
 }
+
+.wrapper .__hero {
+  border: 2px solid red;
+  background-image: url(https://images.unsplash.com/photo-1534445967719-8ae7b972b1a5?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=764&q=80);
+  background-size: cover ;
+}
+
+.wrapper .__hero .intestazione {
+  padding: 30px;
+  height: 100%;
+  color: whitesmoke;
+  font-size: 2rem;
+  text-shadow: 3px 3px rgba(0, 0, 0, 0.315);
+}
+
+.wrapper .__hero .intestazione h2 {
+  margin-bottom: 0;
+}
+
 
 .wrapper__titles {
   display: flex;
