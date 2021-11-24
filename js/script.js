@@ -114,7 +114,7 @@ const clearCartBtn = document.querySelector(".clearCart");
 
 if (localStorageTot === null) {
   localStorageTot = 0
-  ;
+    ;
 };
 
 
@@ -127,4 +127,3 @@ clearCartBtn.addEventListener("click", () => {
   localStorage.removeItem("totCartitems", cartList.length)
   setCartProductsNum();
 });
-
