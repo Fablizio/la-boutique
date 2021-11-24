@@ -35,6 +35,8 @@ strong {
   justify-content: center;
 }
 
+
+
 .overlay {
   position: absolute;
   top: 0;
@@ -48,7 +50,7 @@ strong {
   filter: contrast(1.4) sepia(0.2);
 }
 
-.overlay2{
+.overlay2 {
   position: absolute;
   top: 0;
   height: 350px;
@@ -62,7 +64,7 @@ strong {
 }
 
 .overlay3 {
-   position: absolute;
+  position: absolute;
   top: 0;
   height: 350px;
   width: 100%;
@@ -73,7 +75,6 @@ strong {
 
   filter: contrast(1.4) sepia(0.2);
 }
-
 
 .wrapper .__hero {
   position: relative;
@@ -95,6 +96,33 @@ strong {
 
 .wrapper .__hero .intestazione h2 {
   margin-bottom: 0;
+}
+
+.cartBanner {
+  display: flex;
+  justify-content: flex-end;
+  background-image: linear-gradient(135deg, #f6416c 10%, #fff6b7 100%);
+}
+
+.cartBanner .cartProductsNum {
+  margin-right: 20px;
+}
+
+.cartBanner .clearCart {
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  transition: 0.35s;
+}
+
+.cartBanner .clearCart:hover {
+  transform: scale(1.6);
+}
+
+.cartBanner .cartProductsNum::before {
+  content: "🛒";
+  margin-right: 10px;
+  font-size: 1.5rem;
 }
 
 .wrapper__titles {
@@ -146,3 +174,10 @@ strong {
 .product p {
   align-self: flex-end;
 }
+
+
+
+
+
+
+
