@@ -32,27 +32,39 @@ function createProduct(parent, imgUrl, productTitle, textPrice, idProduct) {
   parent.appendChild(product);
 
   product.addEventListener("click", (e) => {
+    const localStorageValue = localStorage.getItem("totCartitems");
+    if (localStorageValue) {
+      cartList = JSON.parse(localStorageValue);
+    }
+
     cartList.push(
       productsList.find(
         (product) => parseInt(e.currentTarget.id) === product.id
       )
     );
     setCartProductsNum();
-    const modal = document.querySelector(".modal");
-    const button = document.getElementsByClassName(".close");
-    product.onclick = function () {
-      modal.style.display = "block";
-    };
+
+    function modal() {
+      const modal = document.querySelector(".modal");
+      const button = document.getElementsByClassName(".close");
+      product.onclick = function () {
+        modal.style.display = "block";
+      };
+      window.onclick = function (event) {
+        if (event.target == modal) {
+          modal.style.display = "none";
+        }
+      };
+    }
+
+    modal();
     // Nel caso in cui volessimo aggiungere una interazione col LocalStorage
-    localStorage.setItem("totCartitems", cartList.length);
+
+    localStorage.setItem("totCartitems", JSON.stringify(cartList));
+
+    // console.log("LOCAL STORAGE ==>", localStorageValue);
   });
 }
-/** if i press the screen close the modal */
-window.onclick = function (event) {
-  if (event.target == modal) {
-    modal.style.display = "none";
-  }
-};
 
 function createImg(parent, imgUrl, productTitle) {
   const image = document.createElement("img");
@@ -105,17 +117,16 @@ const wrapperProducts = document.querySelector(".wrapper__products");
 // Parte inerente alla logica del carrello
 let cartList = [];
 
-let localStorageTot = localStorage.getItem("totCartitems");
+const localStorageTot = localStorage.getItem("totCartitems");
 const cartBtn = document.querySelector(".cartBtn");
 const cartProductsNum = document.querySelector(".cartProductsNum");
 const clearCartBtn = document.querySelector(".clearCart");
 
-if (localStorageTot === null) {
-  localStorageTot = 0;
-}
-
 // Flusso generale
-cartProductsNum.textContent = `Numero prodotti: ${localStorageTot}`;
+const parsedTotCardItemsLen =
+  JSON.parse(localStorage.getItem("totCartitems"))?.length || 0;
+
+cartProductsNum.textContent = `Numero prodotti: ${parsedTotCardItemsLen || 0}`;
 getProductsList();
 
 clearCartBtn.addEventListener("click", () => {
@@ -123,3 +134,20 @@ clearCartBtn.addEventListener("click", () => {
   localStorage.removeItem("totCartitems", cartList.length);
   setCartProductsNum();
 });
+
+let reviews = new Array();
+reviews[0] = "Stupendo 10/10 ❤️❤️❤️";
+reviews[1] =
+  "In questo negozio ho comprato la mia felpa preferita :) 10/10 ✨✨✨";
+reviews[2] = "Il negozio che ho sempre sognato!!! 10/10 🌟🌟🌟";
+reviews[3] = "Questo negozio mi ha cambiato la vita!!!! 😊😊😊😊";
+
+let counter = 0;
+function loop() {
+  if (counter > 2) counter = 0;
+  document.getElementById("box__reviews").firstElementChild.innerHTML =
+    reviews[counter];
+  counter++;
+  setTimeout(loop, 2000);
+}
+loop();
