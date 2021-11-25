@@ -1,4 +1,3 @@
-
 /** funzione slideshow */
 
 function slideshow() {
@@ -18,7 +17,6 @@ function slideshow() {
 window.onload = setInterval(function () {
   slideshow();
 }, 9000);
-
 
 function setCartProductsNum() {
   cartProductsNum.textContent = `Numero prodotti: ${cartList.length}`;
@@ -54,7 +52,7 @@ window.onclick = function (event) {
   if (event.target == modal) {
     modal.style.display = "none";
   }
-}
+};
 
 function createImg(parent, imgUrl, productTitle) {
   const image = document.createElement("img");
@@ -69,7 +67,7 @@ function createText(parent, productTitle, textPrice) {
   title.textContent = productTitle;
 
   const price = document.createElement("strong");
-  price.textContent = `${textPrice} $`
+  price.textContent = `${textPrice} $`;
 
   parent.append(title, price);
 }
@@ -113,10 +111,8 @@ const cartProductsNum = document.querySelector(".cartProductsNum");
 const clearCartBtn = document.querySelector(".clearCart");
 
 if (localStorageTot === null) {
-  localStorageTot = 0
-    ;
-};
-
+  localStorageTot = 0;
+}
 
 // Flusso generale
 cartProductsNum.textContent = `Numero prodotti: ${localStorageTot}`;
@@ -124,6 +120,6 @@ getProductsList();
 
 clearCartBtn.addEventListener("click", () => {
   cartList.length = 0;
-  localStorage.removeItem("totCartitems", cartList.length)
+  localStorage.removeItem("totCartitems", cartList.length);
   setCartProductsNum();
 });
